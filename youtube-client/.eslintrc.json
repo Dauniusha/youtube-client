@@ -20,6 +20,10 @@
         "airbnb-typescript/base"
       ],
       "rules": {
+        "class-methods-use-this": "warn", // TODO: Delete in the future
+        "@angular-eslint/no-empty-lifecycle-method": "warn", // TODO: Delete in the future
+        "@typescript-eslint/no-empty-function": "warn", // TODO: Delete in the future
+        "@typescript-eslint/no-useless-constructor": "warn", // TODO: Delete in the future
         "import/prefer-default-export": "off",
         "max-len": [
           "error",

@@ -1,4 +1,4 @@
-import { CardStatistics } from "./card-statistics-interface";
+import { CardStatistics } from './card-statistics-interface';
 
 export interface CardData {
   id: string;
