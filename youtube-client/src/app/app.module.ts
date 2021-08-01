@@ -3,12 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './app/header/header/header.component';
+import { HeaderComponent } from './header/header/header.component';
 import { SearchBarComponent } from './header/components/search-bar/search-bar.component';
 import { SortingBarComponent } from './header/components/sorting-bar/sorting-bar.component';
 import { UserProfileComponent } from './header/components/user-profile/user-profile.component';
 import { MainComponent } from './main/main/main.component';
-import { CardComponent } from './main/components/card/card.component';
+import { MiniCardComponent } from './main/components/mini-card/mini-card.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { CardComponent } from './main/components/card/card.component';
     SortingBarComponent,
     UserProfileComponent,
     MainComponent,
-    CardComponent,
+    MiniCardComponent,
   ],
   imports: [
     BrowserModule,
