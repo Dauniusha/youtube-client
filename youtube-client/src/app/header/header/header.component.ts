@@ -6,8 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+
+  sortingBarIsOpened: boolean = false;
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  toogleSortingBarState() {
+    this.sortingBarIsOpened = !this.sortingBarIsOpened;
   }
 }

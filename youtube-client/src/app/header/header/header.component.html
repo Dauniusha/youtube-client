@@ -1,1 +1,9 @@
-<p>header works!</p>
+<div class="header-main">
+  <div class="search-container">
+    <img class="search-logo" src="../../../assets/header/YT-logo.svg" alt="youtube logo">
+    <app-search-bar></app-search-bar>
+    <app-setting-btn (onOpened)="toogleSortingBarState()"></app-setting-btn>
+  </div>
+  <app-user-profile></app-user-profile>
+</div>
+<app-sorting-bar *ngIf="sortingBarIsOpened"></app-sorting-bar>

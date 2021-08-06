@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+input {
+  border: none;
+  outline: none;
+}
+
+.header-btn {
+  box-sizing: border-box;
+  width: 4.5vh;
+  height: 4.5vh;
+  background-color: #2F80ED;
+  border-radius: 4px;
+  padding: 4.5vh * 0.18;
+}

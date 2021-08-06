@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CardData } from '../../models/card-data-interface';
 import { CardStatistics } from '../../models/card-statistics-interface';
 
 @Component({
