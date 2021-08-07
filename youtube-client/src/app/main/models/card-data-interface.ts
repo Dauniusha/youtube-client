@@ -5,5 +5,5 @@ export interface CardData {
   title: string;
   description: string;
   statistics: CardStatistics;
-  date: string;
+  date: Date;
 }

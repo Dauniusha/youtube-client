@@ -1,6 +1,6 @@
 export interface CardStatistics {
-  viewCount: number;
-  likeCount: number;
-  dislikeCount: number;
-  commentCount: number;
+  viewCount: string;
+  likeCount: string;
+  dislikeCount: string;
+  commentCount: string;
 }

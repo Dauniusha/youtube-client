@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { setting } from 'src/app/settings/setting';
+import { CardData } from '../../models/card-data-interface';
 import { CardStatistics } from '../../models/card-statistics-interface';
 
 @Component({
@@ -7,25 +9,32 @@ import { CardStatistics } from '../../models/card-statistics-interface';
   styleUrls: ['./mini-card.component.scss'],
 })
 export class MiniCardComponent implements OnInit {
-  private id: string = '';
+  videoLink: string = '';
 
-  private title: string = '';
+  previewLink: string = '';
 
-  private statistics: CardStatistics = {
-    likeCount: 0,
-    viewCount: 0,
-    dislikeCount: 0,
-    commentCount: 0,
+  date: Date = new Date();
+
+  data?: CardData;
+
+  @Input() set cardData(data: CardData) {
+    this.data = data;
+
+    this.date = data.date;
+
+    this.videoLink = setting.urlConstants.videoLink + data.id;
+    this.previewLink = setting.urlConstants.previewLink + data.id + setting.urlConstants.previewQuality.medium;
   };
 
-  private color: string = '';
-
-  constructor(/* data: CardData */) {
-    // this.id = data.id;
-    // this.title = data.title;
-    // this.statistics = data.statistics;
-  }
+  constructor() { }
 
   ngOnInit(): void {
+  }
+
+  get cardData() {
+    if (this.data) {
+      return this.data;
+    }
+    throw Error('Data does not exist!');
   }
 }

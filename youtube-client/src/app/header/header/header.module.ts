@@ -5,8 +5,9 @@ import { SettingBtnComponent } from '../components/setting-btn/setting-btn.compo
 import { SearchBarComponent } from '../components/search-bar/search-bar.component';
 import { UserProfileComponent } from '../components/user-profile/user-profile.component';
 
-import { MatButtonModule } from '@angular/material/button';
 import { SortingBarComponent } from '../components/sorting-bar/sorting-bar.component';
+
+import { MatButtonModule } from '@angular/material/button';
 
 
 
