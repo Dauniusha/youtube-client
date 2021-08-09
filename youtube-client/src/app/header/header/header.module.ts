@@ -8,6 +8,7 @@ import { UserProfileComponent } from '../components/user-profile/user-profile.co
 import { SortingBarComponent } from '../components/sorting-bar/sorting-bar.component';
 
 import { MatButtonModule } from '@angular/material/button';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -22,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     MatButtonModule,
+    MatSortModule,
   ],
   exports: [
     HeaderComponent,

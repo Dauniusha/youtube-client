@@ -1,4 +1,4 @@
-<div class="header-main">
+<div [ngClass]="{ 'header_open' :!sortingBarIsOpened }" class="header-main">
   <div class="search-container">
     <img class="search-logo" src="../../../assets/header/YT-logo.svg" alt="youtube logo">
     <app-search-bar></app-search-bar>
@@ -6,4 +6,4 @@
   </div>
   <app-user-profile></app-user-profile>
 </div>
-<app-sorting-bar *ngIf="sortingBarIsOpened"></app-sorting-bar>
+<app-sorting-bar *ngIf="sortingBarIsOpened" class="header_open"></app-sorting-bar>
