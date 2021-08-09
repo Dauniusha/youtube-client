@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { setting } from 'src/app/settings/setting';
 import { CardData } from '../../models/card-data-interface';
-import { CardStatistics } from '../../models/card-statistics-interface';
 
 @Component({
   selector: 'app-mini-card',

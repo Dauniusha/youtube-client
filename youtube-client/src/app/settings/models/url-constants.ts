@@ -7,4 +7,5 @@ export const urlConstants = {
     hight: '/hqdefault.jpg',
     default: '/sqdefault.jpg',
   },
+  requestUrl: '../../../assets/answer-example.json',
 };
