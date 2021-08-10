@@ -1,2 +1,2 @@
-<app-header></app-header>
-<app-main></app-main>
+<app-header (onSortingByWord)="setQuery($event)" (onChangeSort)="setSort($event)"></app-header>
+<app-main [query]="query" [sortData]="sortData"></app-main>

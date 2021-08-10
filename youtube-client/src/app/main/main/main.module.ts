@@ -10,6 +10,8 @@ import { StatisticsFilterPipe } from '../pipes/statistics-filter.pipe';
 import { TitleFilterPipe } from '../pipes/title-filter.pipe';
 
 import { SetColorDatePlaceholderDirective } from '../directives/set-color-date-placeholder.directive';
+import { FilterByWordPipe } from '../pipes/filter-by-word.pipe';
+import { SortingPipe } from '../pipes/sorting.pipe';
 
 
 
@@ -17,8 +19,12 @@ import { SetColorDatePlaceholderDirective } from '../directives/set-color-date-p
   declarations: [
     MainComponent,
     MiniCardComponent,
+
     StatisticsFilterPipe,
     TitleFilterPipe,
+    FilterByWordPipe,
+    SortingPipe,
+
     SetColorDatePlaceholderDirective,
   ],
   imports: [

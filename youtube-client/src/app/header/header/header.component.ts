@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Sort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  @Output() onSortingByWord = new EventEmitter<string>();
+
+  @Output() onChangeSort = new EventEmitter<Sort>();
 
   sortingBarIsOpened: boolean = false;
 
@@ -15,5 +19,13 @@ export class HeaderComponent implements OnInit {
 
   toogleSortingBarState() {
     this.sortingBarIsOpened = !this.sortingBarIsOpened;
+  }
+
+  emitQuery(query: string) {
+    this.onSortingByWord.emit(query);
+  }
+
+  emitSortChanging(event: Sort) {
+    this.onChangeSort.emit(event);
   }
 }

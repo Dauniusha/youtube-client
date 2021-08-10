@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Sort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'youtube-client';
+
+  query: string = '';
+
+  sortData?: Sort;
+
+  setQuery(query: any) {
+    this.query = query;
+  }
+
+  setSort(sortData: Sort) {
+    this.sortData = sortData;
+  }
 }

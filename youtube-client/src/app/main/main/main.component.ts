@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Sort } from '@angular/material/sort';
 import { Observable } from 'rxjs';
 import { CardData } from '../models/card-data-interface';
 import { HttpService } from '../services/http.service';
@@ -13,6 +13,10 @@ import { HttpService } from '../services/http.service';
   ],
 })
 export class MainComponent implements OnInit {
+  @Input() query: string = '';
+
+  @Input() sortData?: Sort;
+
   cards?: Observable<CardData[]>;
 
   constructor(private httpService: HttpService) { }

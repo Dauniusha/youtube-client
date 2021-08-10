@@ -6,4 +6,8 @@
   </div>
   <app-user-profile></app-user-profile>
 </div>
-<app-sorting-bar *ngIf="sortingBarIsOpened" class="header_open"></app-sorting-bar>
+<app-sorting-bar
+  *ngIf="sortingBarIsOpened"
+  class="header_open"
+  (onSortingByWord)="emitQuery($event)"
+  (onChangeSort)="emitSortChanging($event)"></app-sorting-bar>
