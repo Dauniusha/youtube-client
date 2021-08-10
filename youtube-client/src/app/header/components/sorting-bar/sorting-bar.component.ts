@@ -30,4 +30,10 @@ export class SortingBarComponent implements OnInit {
   changeSort(event: Sort) {
     this.onChangeSort.emit(event);
   }
+
+  submitChecking(event: KeyboardEvent) {
+    if (event.key === 'Enter' && this.queryString.length) {
+      this.emitSearchingQuery();
+    }
+  }
 }

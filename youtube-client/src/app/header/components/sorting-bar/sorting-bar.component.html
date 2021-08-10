@@ -13,6 +13,7 @@
       class="sorting--by-word__input"
       type="text"
       placeholder="Enter word or sentance" 
-      (input)="wordSearching($event)">
+      (input)="wordSearching($event)"
+      (keypress)="submitChecking($event)">
   </div>
 </div>
