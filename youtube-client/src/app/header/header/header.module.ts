@@ -9,6 +9,7 @@ import { SortingBarComponent } from '../components/sorting-bar/sorting-bar.compo
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatSortModule } from '@angular/material/sort';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -24,6 +25,7 @@ import { MatSortModule } from '@angular/material/sort';
     CommonModule,
     MatButtonModule,
     MatSortModule,
+    FormsModule,
   ],
   exports: [
     HeaderComponent,

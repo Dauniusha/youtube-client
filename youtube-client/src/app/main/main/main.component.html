@@ -1,3 +1,5 @@
 <div class="cards__container">
-  <app-mini-card *ngFor="let card of cards | async | sorting: sortData?.active : sortData?.direction | filterByWord: query" [cardData]="card"></app-mini-card>
+  <app-mini-card
+  *ngFor="let card of cards | async | sorting: sortData?.active : sortData?.direction | filterByWord: sortingByWordQuery"
+  [cardData]="card"></app-mini-card>
 </div>

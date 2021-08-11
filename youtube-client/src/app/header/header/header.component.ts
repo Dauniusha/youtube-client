@@ -11,6 +11,8 @@ export class HeaderComponent implements OnInit {
 
   @Output() onChangeSort = new EventEmitter<Sort>();
 
+  @Output() onHeaderChanged = new EventEmitter<string>();
+
   sortingBarIsOpened: boolean = false;
 
   constructor() { }
@@ -21,11 +23,15 @@ export class HeaderComponent implements OnInit {
     this.sortingBarIsOpened = !this.sortingBarIsOpened;
   }
 
-  emitQuery(query: string) {
+  emitSortingQuery(query: string) {
     this.onSortingByWord.emit(query);
   }
 
   emitSortChanging(event: Sort) {
     this.onChangeSort.emit(event);
+  }
+
+  emitHeaderInputQuery(query: string) {
+    this.onHeaderChanged.emit(query);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, DoCheck, Input, OnChanges, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 import { Observable } from 'rxjs';
 import { CardData } from '../models/card-data-interface';
@@ -13,15 +13,20 @@ import { HttpService } from '../services/http.service';
   ],
 })
 export class MainComponent implements OnInit {
-  @Input() query: string = '';
+  @Input() sortingByWordQuery: string = '';
 
   @Input() sortData?: Sort;
+
+  @Input() set headerQuery(query: string) {
+    this.cards = this.httpService.getCards(query);
+  }
 
   cards?: Observable<CardData[]>;
 
   constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
-    this.cards = this.httpService.getCards();
   }
+
+
 }

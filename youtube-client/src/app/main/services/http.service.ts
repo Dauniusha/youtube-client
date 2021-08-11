@@ -12,11 +12,12 @@ import { YoutubeResponseItem } from '../models/youtube-response/response-item';
   providedIn: 'root'
 })
 export class HttpService {
+  response?: Observable<any>;
 
   constructor(private httpClient: HttpClient) { }
 
-  getCards(): Observable<any> {
-    return this.httpClient.get(setting.urlConstants.requestUrl).pipe(
+  getCards(queryString: string) {
+    this.response = this.httpClient.get(setting.urlConstants.requestUrl).pipe(
       map((data: any) => this.filterGetResponse(data)),
     );
   }

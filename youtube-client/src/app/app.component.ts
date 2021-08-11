@@ -9,15 +9,21 @@ import { Sort } from '@angular/material/sort';
 export class AppComponent {
   title = 'youtube-client';
 
-  query: string = '';
+  wordQuery: string = '';
 
   sortData?: Sort;
 
-  setQuery(query: any) {
-    this.query = query;
+  headerQuery: string = '';
+
+  setQuery(query: string) {
+    this.wordQuery = query;
   }
 
   setSort(sortData: Sort) {
     this.sortData = sortData;
+  }
+
+  setHeaderQuery(query: string) {
+    this.headerQuery = query;
   }
 }
