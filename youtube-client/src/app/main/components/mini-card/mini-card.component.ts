@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { setting } from 'src/app/settings/setting';
-import { CardData } from '../../models/card-data-interface';
+import { ICardData } from '../../models/card-data-interface';
 
 @Component({
   selector: 'app-mini-card',
@@ -8,22 +8,22 @@ import { CardData } from '../../models/card-data-interface';
   styleUrls: ['./mini-card.component.scss'],
 })
 export class MiniCardComponent implements OnInit {
-  videoLink: string = '';
+  public videoLink: string = '';
 
-  previewLink: string = '';
+  public previewLink: string = '';
 
-  date: Date = new Date();
+  public date: Date = new Date();
 
-  data?: CardData;
+  public data?: ICardData;
 
-  @Input() set cardData(data: CardData) {
+  @Input() set cardData(data: ICardData) {
     this.data = data;
 
     this.date = data.date;
 
     this.videoLink = setting.urlConstants.videoLink + data.id;
     this.previewLink = setting.urlConstants.previewLink + data.id + setting.urlConstants.previewQuality.medium;
-  };
+  }
 
   constructor() { }
 

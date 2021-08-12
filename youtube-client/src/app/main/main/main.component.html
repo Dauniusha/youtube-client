@@ -1,4 +1,6 @@
-  <app-mini-card
-    *ngFor="let card of cards | sorting: sortData?.active : sortData?.direction | filterByWord: sortingByWordQuery"
-    [cardData]="card"
-  ></app-mini-card>
+  <div class="cards__container">
+    <app-mini-card
+      *ngFor="let card of cards | sorting: sortData?.active : sortData?.direction | filterByWord: sortingByWordQuery"
+      [cardData]="card"
+    ></app-mini-card>
+  </div>

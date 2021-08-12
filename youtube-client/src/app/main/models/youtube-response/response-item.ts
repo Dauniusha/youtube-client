@@ -1,10 +1,10 @@
-import { Thumbnail } from "./thumbnail";
+import { IThumbnail } from './thumbnail';
 
-export interface YoutubeResponseItem {
+export interface IYoutubeResponseItem {
   kind: string;
   etag: string;
   id: string;
-  
+
   snippet: {
     publishedAt: string;
     channelId: string;
@@ -12,11 +12,11 @@ export interface YoutubeResponseItem {
     description: string;
 
     thumbnails: {
-      default: Thumbnail;
-      medium: Thumbnail;
-      high: Thumbnail;
-      standard: Thumbnail;
-      maxres: Thumbnail;
+      default: IThumbnail;
+      medium: IThumbnail;
+      high: IThumbnail;
+      standard: IThumbnail;
+      maxres: IThumbnail;
     };
 
     channelTitle: string;

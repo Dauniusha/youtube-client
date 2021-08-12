@@ -1,4 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component, EventEmitter, OnInit, Output,
+} from '@angular/core';
 import { Sort } from '@angular/material/sort';
 
 @Component({
@@ -13,7 +15,7 @@ export class HeaderComponent implements OnInit {
 
   @Output() onHeaderChanged = new EventEmitter<string>();
 
-  sortingBarIsOpened: boolean = false;
+  public sortingBarIsOpened: boolean = false;
 
   constructor() { }
 

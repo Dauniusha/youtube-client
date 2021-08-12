@@ -1,11 +1,11 @@
-import { YoutubeResponseItem } from "./response-item";
+import { IYoutubeResponseItem } from './response-item';
 
-export interface YoutubeAnswer {
+export interface IYoutubeAnswer {
   kind: string;
   etag: string;
   pageInfo: {
     totalResults: number;
     resultsPerPage: number;
   };
-  items: YoutubeResponseItem[];
+  items: IYoutubeResponseItem[];
 }

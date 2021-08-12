@@ -20,10 +20,13 @@
         "airbnb-typescript/base"
       ],
       "rules": {
-        "class-methods-use-this": "warn", // TODO: Delete in the future
-        "@angular-eslint/no-empty-lifecycle-method": "warn", // TODO: Delete in the future
-        "@typescript-eslint/no-empty-function": "warn", // TODO: Delete in the future
-        "@typescript-eslint/no-useless-constructor": "warn", // TODO: Delete in the future
+        "@angular-eslint/no-output-on-prefix": "warn",
+        "class-methods-use-this": "warn",
+        "no-param-reassign": "off",
+        "no-return-assign": "off",
+        "@angular-eslint/no-empty-lifecycle-method": "warn",
+        "@typescript-eslint/no-empty-function": "warn",
+        "@typescript-eslint/no-useless-constructor": "off",
         "import/prefer-default-export": "off",
         "max-len": [
           "error",

@@ -1,4 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component, OnInit, Output, EventEmitter,
+} from '@angular/core';
 
 @Component({
   selector: 'app-setting-btn',
@@ -6,7 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./setting-btn.component.scss'],
 })
 export class SettingBtnComponent implements OnInit {
-  isOpened: boolean = false;
+  public isOpened: boolean = false;
 
   @Output() onOpened = new EventEmitter<boolean>();
 

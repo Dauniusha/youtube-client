@@ -1,12 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { CardData } from '../models/card-data-interface';
+import { ICardData } from '../models/card-data-interface';
 
 @Pipe({
-  name: 'filterByWord'
+  name: 'filterByWord',
 })
 export class FilterByWordPipe implements PipeTransform {
-
-  transform(value: CardData[] | null, query: string): CardData[] {
+  transform(value: ICardData[] | null, query: string): ICardData[] {
     if (!value) {
       return [];
     }
@@ -17,9 +16,6 @@ export class FilterByWordPipe implements PipeTransform {
 
     query = query.toLowerCase();
 
-    return value.filter((card) => {
-      return card.title.toLowerCase().includes(query);
-    });
+    return value.filter((card) => card.title.toLowerCase().includes(query));
   }
-
 }

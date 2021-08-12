@@ -1,9 +1,9 @@
-import { CardStatistics } from './card-statistics-interface';
+import { ICardStatistics } from './card-statistics-interface';
 
-export interface CardData {
+export interface ICardData {
   id: string;
   title: string;
   description: string;
-  statistics: CardStatistics;
+  statistics: ICardStatistics;
   date: Date;
 }

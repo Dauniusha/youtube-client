@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/shared/services/http.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { HttpService } from 'src/app/shared/services/http.service';
   providers: [HttpService],
 })
 export class SearchBarComponent implements OnInit {
-  query: string = '';
+  public query: string = '';
 
   constructor(private httpService: HttpService) { }
 
