@@ -1,8 +1,8 @@
-import { AfterContentChecked, Component, DoCheck, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 import { Observable } from 'rxjs';
 import { CardData } from '../models/card-data-interface';
-import { HttpService } from '../services/http.service';
+import { HttpService } from '../../shared/services/http.service';
 
 @Component({
   selector: 'app-main',
@@ -17,16 +17,12 @@ export class MainComponent implements OnInit {
 
   @Input() sortData?: Sort;
 
-  @Input() set headerQuery(query: string) {
-    this.cards = this.httpService.getCards(query);
+  cards: CardData[] = [];
+
+  constructor(public httpService: HttpService) {
   }
-
-  cards?: Observable<CardData[]>;
-
-  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
+    this.httpService.response$.subscribe(cards => this.cards = cards);
   }
-
-
 }

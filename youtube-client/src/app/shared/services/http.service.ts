@@ -1,25 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { setting } from 'src/app/settings/setting';
-import { CardData } from '../models/card-data-interface';
+import { CardData } from '../../main/models/card-data-interface';
 
 import { map } from 'rxjs/operators';
-import { YoutubeAnswer } from '../models/youtube-response/youtube-answer-interface';
-import { YoutubeResponseItem } from '../models/youtube-response/response-item';
+import { YoutubeAnswer } from '../../main/models/youtube-response/youtube-answer-interface';
+import { YoutubeResponseItem } from '../../main/models/youtube-response/response-item';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
-  response?: Observable<any>;
+  isFirst = true;
+
+  private response: BehaviorSubject<CardData[]> = new BehaviorSubject(<CardData[]> []);
+
+  public response$: Observable<CardData[]> = this.response.asObservable();
 
   constructor(private httpClient: HttpClient) { }
 
   getCards(queryString: string) {
-    this.response = this.httpClient.get(setting.urlConstants.requestUrl).pipe(
+    this.httpClient.get(setting.urlConstants.requestUrl)
+    .pipe(
       map((data: any) => this.filterGetResponse(data)),
-    );
+    )
+    .subscribe((data: CardData[]) => this.response.next(data));
   }
 
   private filterGetResponse(data: YoutubeAnswer): CardData[] {

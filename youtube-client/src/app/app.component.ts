@@ -22,8 +22,4 @@ export class AppComponent {
   setSort(sortData: Sort) {
     this.sortData = sortData;
   }
-
-  setHeaderQuery(query: string) {
-    this.headerQuery = query;
-  }
 }

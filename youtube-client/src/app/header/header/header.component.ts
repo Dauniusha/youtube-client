@@ -30,8 +30,4 @@ export class HeaderComponent implements OnInit {
   emitSortChanging(event: Sort) {
     this.onChangeSort.emit(event);
   }
-
-  emitHeaderInputQuery(query: string) {
-    this.onHeaderChanged.emit(query);
-  }
 }
