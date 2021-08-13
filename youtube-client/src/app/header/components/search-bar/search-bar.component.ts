@@ -5,7 +5,6 @@ import { HttpService } from 'src/app/shared/services/http.service';
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss'],
-  providers: [HttpService],
 })
 export class SearchBarComponent implements OnInit {
   public query: string = '';
