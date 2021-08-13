@@ -6,8 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderModule } from './header/header/header.module';
-import { MainModule } from './main/main/main.module';
+import { HeaderModule } from './core/header/header.module';
+import { MainModule } from './core/main/main.module';
 
 @NgModule({
   declarations: [

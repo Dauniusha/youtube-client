@@ -24,14 +24,14 @@ export class SortingPipe implements PipeTransform {
         case 'date':
           return SortingPipe.compaire(a.date, b.date, isAsc);
         case 'viewCount':
-          return SortingPipe.compaire(a.statistics.viewCount, b.statistics.viewCount, isAsc);
+          return SortingPipe.compaire(Number(a.statistics.viewCount), Number(b.statistics.viewCount), isAsc);
         default:
           throw new Error('This categoties does not exist!');
       }
     });
   }
 
-  private static compaire(a: Date | string, b: Date | string, isAsc: boolean) {
+  private static compaire(a: Date | number, b: Date | number, isAsc: boolean) {
     return (a > b ? 1 : -1) * (isAsc ? 1 : -1);
   }
 }

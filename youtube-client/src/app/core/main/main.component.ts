@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
-import { ICardData } from '../models/card-data-interface';
+import { ICardData } from '../../main/models/card-data-interface';
 import { HttpService } from '../../shared/services/http.service';
 import { Observable } from 'rxjs';
 
