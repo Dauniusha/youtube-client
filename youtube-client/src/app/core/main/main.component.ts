@@ -3,6 +3,7 @@ import { Sort } from '@angular/material/sort';
 import { ICardData } from '../../main/models/card-data-interface';
 import { HttpService } from '../../shared/services/http.service';
 import { Observable } from 'rxjs';
+import { SortingService } from 'src/app/shared/services/sorting.service';
 
 @Component({
   selector: 'app-main',
@@ -10,15 +11,19 @@ import { Observable } from 'rxjs';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-  @Input() sortingByWordQuery: string = '';
+  sortingByWordQuery: string = '';
 
-  @Input() sortData?: Sort;
+  sortData?: Sort;
 
   public cards: Observable<ICardData[]> = this.httpService.response$;
 
-  constructor(public httpService: HttpService) {
-  }
+  constructor(
+      public httpService: HttpService,
+      public sortingService: SortingService
+    ) { }
 
   ngOnInit(): void {
+    this.sortingService.sorting$.subscribe((sortData) => this.sortData = sortData);
+    this.sortingService.filter$.subscribe((query) => this.sortingByWordQuery = query);
   }
 }

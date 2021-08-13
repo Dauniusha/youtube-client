@@ -8,10 +8,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderModule } from './core/header/header.module';
 import { MainModule } from './core/main/main.module';
+import { ErrorComponent } from './core/error/error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,

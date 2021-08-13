@@ -2,6 +2,7 @@ import {
   Component, EventEmitter, OnInit, Output,
 } from '@angular/core';
 import { Sort } from '@angular/material/sort';
+import { SortingService } from 'src/app/shared/services/sorting.service';
 
 @Component({
   selector: 'app-sorting-bar',
@@ -15,21 +16,13 @@ export class SortingBarComponent implements OnInit {
 
   public queryString: string = '';
 
-  constructor() { }
+  constructor(public sortingService: SortingService) { }
 
   ngOnInit(): void {
   }
 
   wordSearching(event: Event) {
     this.queryString = (<HTMLInputElement> event.target).value;
-    this.onSortingByWord.emit(this.queryString);
-  }
-
-  emitSearchingQuery() {
-    this.onSortingByWord.emit(this.queryString);
-  }
-
-  changeSort(event: Sort) {
-    this.onChangeSort.emit(event);
+    this.sortingService.setFilter(this.queryString);
   }
 }

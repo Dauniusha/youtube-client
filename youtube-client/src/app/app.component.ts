@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Sort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-root',
@@ -8,18 +7,4 @@ import { Sort } from '@angular/material/sort';
 })
 export class AppComponent {
   title = 'youtube-client';
-
-  wordQuery: string = '';
-
-  sortData?: Sort;
-
-  headerQuery: string = '';
-
-  setQuery(query: string) {
-    this.wordQuery = query;
-  }
-
-  setSort(sortData: Sort) {
-    this.sortData = sortData;
-  }
 }
