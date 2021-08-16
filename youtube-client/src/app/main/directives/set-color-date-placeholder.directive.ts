@@ -1,4 +1,4 @@
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, ElementRef, HostBinding, Input } from '@angular/core';
 import * as moment from 'moment';
 import { setting } from 'src/app/settings/setting';
 
@@ -8,18 +8,41 @@ import { setting } from 'src/app/settings/setting';
 export class SetColorDatePlaceholderDirective {
   @HostBinding('style.background') public background: string = '';
 
-  constructor() { }
+  @HostBinding('style.box-shadow') public shadow: string = '';
+
+  constructor(
+    private elementRef: ElementRef
+  ) { }
+
+  @Input() public isMain = false;
 
   @Input() set appSetColorDatePlaceholder(date: Date) {
-    this.background = setting.stringConstants.color.red;
     const daysDifference = moment().diff(moment(date), 'days');
 
-    if (daysDifference < 7) {
-      this.background = setting.stringConstants.color.blue;
-    } else if (daysDifference < 30) {
-      this.background = setting.stringConstants.color.green;
-    } else if (daysDifference < 180) {
-      this.background = setting.stringConstants.color.yellow;
+    const color = SetColorDatePlaceholderDirective.getColor(daysDifference);
+    console.log(`5px 10px 10px rgba(${color}, 0.25)`);
+    
+
+    if (this.isMain) {
+      if ((<HTMLElement>this.elementRef.nativeElement).classList.contains('detailed-information__btn')) {
+        this.shadow = `-2px 2px 4px rgba(${color}, 0.25)`;
+        this.background = `rgb(${color})`;
+      } else {
+        this.shadow = `10px 20px 20px rgba(${color}, 0.25)`;
+      }
+    } else {
+      this.background = `rgb(${color})`;
     }
+  }
+
+  private static getColor(daysDifference: number): string {
+    if (daysDifference < 7) {
+      return setting.stringConstants.color.blueRGB;
+    } else if (daysDifference < 30) {
+      return setting.stringConstants.color.greenRGB;
+    } else if (daysDifference < 180) {
+      return setting.stringConstants.color.yellowRGB;
+    }
+    return setting.stringConstants.color.redRGB;
   }
 }

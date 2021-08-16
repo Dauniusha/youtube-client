@@ -2,27 +2,10 @@
   <div class="card__container">
     <img class="card__preview" [src]="previewLink" alt="preview">
 
-    <div class="statistics">
-      <div class="statistics__each">
-        <mat-icon class="statistics__icon">visibility</mat-icon>
-        <span class="statistics__text">{{data?.statistics?.viewCount | statisticsFilter}}</span>
-      </div>
-      <div class="statistics__each">
-        <mat-icon class="statistics__icon">favorite</mat-icon>
-        <span class="statistics__text">{{data?.statistics?.likeCount | statisticsFilter}}</span>
-      </div>
-      <div class="statistics__each">
-        <mat-icon class="statistics__icon">favorite_border</mat-icon>
-        <span class="statistics__text">{{data?.statistics?.dislikeCount | statisticsFilter}}</span>
-      </div>
-      <div class="statistics__each">
-        <mat-icon class="statistics__icon">question_answer</mat-icon>
-        <span class="statistics__text">{{data?.statistics?.commentCount | statisticsFilter}}</span>
-      </div>
-    </div>
+    <app-card-statistics [statistics]="data?.statistics"></app-card-statistics>
 
     <h2 class="card__title">{{data?.title | titleFilter}}</h2>
-    <button mat-raised-button class="card__btn">more</button>
+    <button mat-raised-button class="card__btn" [routerLink]="['video', data?.id ]">more</button>
     <div [appSetColorDatePlaceholder]="date" class="card__date-placeholder"></div>
   </div>
 </div>

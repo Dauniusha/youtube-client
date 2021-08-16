@@ -5,19 +5,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { MiniCardComponent } from '../../main/components/mini-card/mini-card.component';
 import { MainComponent } from './main.component';
 
-import { StatisticsFilterPipe } from '../../main/pipes/statistics-filter.pipe';
 import { TitleFilterPipe } from '../../main/pipes/title-filter.pipe';
 
 import { SetColorDatePlaceholderDirective } from '../../main/directives/set-color-date-placeholder.directive';
 import { FilterByWordPipe } from '../../main/pipes/filter-by-word.pipe';
 import { SortingPipe } from '../../main/pipes/sorting.pipe';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { DetailedInformationComponent } from 'src/app/main/components/detailed-information/detailed-information.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     MainComponent,
     MiniCardComponent,
+    DetailedInformationComponent,
 
-    StatisticsFilterPipe,
     TitleFilterPipe,
     FilterByWordPipe,
     SortingPipe,
@@ -28,6 +30,8 @@ import { SortingPipe } from '../../main/pipes/sorting.pipe';
     CommonModule,
     MatIconModule,
     MatButtonModule,
+    SharedModule,
+    RouterModule
   ],
   exports: [
     MainComponent,

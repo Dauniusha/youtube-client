@@ -5,7 +5,8 @@ export const urlConstants = {
     min: '/default.jpg',
     medium: '/mqdefault.jpg',
     hight: '/hqdefault.jpg',
-    default: '/sqdefault.jpg',
+    default: '/sddefault.jpg',
+    max: '/maxresdefault.jpg',
   },
   requestUrl: '../../../assets/answer-example.json',
 };
