@@ -10,4 +10,7 @@ export const stringConstants = {
     greenRGB: '39, 174, 96',
     yellowRGB: '242, 201, 76',
   },
+  storeNames: {
+    token: 'token',
+  },
 };

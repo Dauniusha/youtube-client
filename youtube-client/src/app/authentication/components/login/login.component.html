@@ -1,4 +1,4 @@
-<div class="login">
+<form class="login" (submit)="loginService.login()">
   <h2 class="login__title">Login</h2>
   <div class="login-input">
     <p class="login-input__text">login</p>
@@ -8,5 +8,5 @@
     <p class="login-input__text">password</p>
     <input class="login-input__input" type="password">
   </div>
-  <button mat-raised-button class="login__btn">Login</button>
-</div>
+  <button type="submit" mat-raised-button class="login__btn" routerLink="">Login</button>
+</form>

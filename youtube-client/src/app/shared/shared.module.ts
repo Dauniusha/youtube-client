@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StatisticsFilterPipe } from '../main/pipes/statistics-filter.pipe';
 import { MatIconModule } from '@angular/material/icon';
+import { StatisticsFilterPipe } from '../youtube/pipes/statistics-filter.pipe';
 import { CardStatisticsComponent } from './components/card-statistics/card-statistics.component';
-
-
 
 @NgModule({
   declarations: [
@@ -17,6 +15,6 @@ import { CardStatisticsComponent } from './components/card-statistics/card-stati
   ],
   exports: [
     CardStatisticsComponent,
-  ]
+  ],
 })
 export class SharedModule { }
