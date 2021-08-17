@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthenticationGuard } from './core/guards/authentication.guard';
 
-import { LoginComponent } from './authentication/components/login/login.component';
+import { LoginComponent } from './authentication/pages/login/login.component';
 import { ErrorComponent } from './core/pages/error/error.component';
 import { MainComponent } from './youtube/pages/main/main.component';
 import { DetailedInformationComponent } from './youtube/pages/detailed-information/detailed-information.component';

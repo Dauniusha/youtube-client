@@ -29,28 +29,6 @@ $buttonColor: #2F80ED;
     margin-bottom: 2vh;
   }
 
-  &-input {
-    margin-bottom: 0.2vh;
-
-    &__text {
-      margin: 0;
-      margin-left: 1vh;
-      font-size: 1.5vh;
-      color: $textSecondColor;
-    }
-
-    &__input {
-      box-sizing: border-box;
-      padding: 0 1vh;
-      width: 100%;
-      height: 5vh;
-      background: $inputColor;
-      border-radius: 3px;
-      color: $mainColor;
-      font-size: 2.5vh;
-    }
-  }
-
   &__btn {
     margin-top: 3vh;
     margin-right: 0;
