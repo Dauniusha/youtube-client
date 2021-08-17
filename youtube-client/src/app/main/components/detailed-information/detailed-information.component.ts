@@ -24,11 +24,10 @@ export class DetailedInformationComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpService.response$.subscribe((cardsData: ICardData[]) => {
-      console.log(this.activatedRoute.snapshot.params['id']);
       this.data = cardsData.find((card) => {
         return card.id === this.activatedRoute.snapshot.params['id'];
       });
-      console.log(this.data);
+      
       if (this.data) {
         this.date = new Date(this.data.date);
         this.previewLink = setting.urlConstants.previewLink + this.data.id + setting.urlConstants.previewQuality.default;

@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { HeaderModule } from './core/header/header.module';
 import { MainModule } from './core/main/main.module';
 import { ErrorComponent } from './core/error/error.component';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ErrorComponent } from './core/error/error.component';
     MainModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AuthenticationModule
   ],
   providers: [],
   bootstrap: [AppComponent],
