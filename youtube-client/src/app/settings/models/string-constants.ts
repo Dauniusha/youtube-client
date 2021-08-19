@@ -13,4 +13,7 @@ export const stringConstants = {
   storeNames: {
     token: 'token',
   },
+  apiKey: 'AIzaSyDrUmTHjMK03mOZIebOHycAd7OJmYuRrho',
+  searchPart: 'snippet',
+  videoPart: 'snippet,statistics',
 };

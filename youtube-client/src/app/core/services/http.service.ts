@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { setting } from 'src/app/settings/setting';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 
 import { ICardData } from 'src/app/youtube/models/card-data-interface';
-import { IYoutubeAnswer } from '../../youtube/models/youtube-response/youtube-answer-interface';
-import { IYoutubeResponseItem } from '../../youtube/models/youtube-response/response-item';
+import { IYoutubeAnswer } from '../models/youtube-search-response/youtube-answer-interface';
+import { IYoutubeResponseItem } from '../models/youtube-search-response/response-item';
 
 @Injectable({
   providedIn: 'root',
@@ -21,15 +21,53 @@ export class HttpService {
   constructor(private httpClient: HttpClient) { }
 
   public getCards(queryString: string) {
-    console.log(queryString);
-    this.httpClient.get(setting.urlConstants.requestUrl)
+    if (queryString.length < setting.numberConstants.minSearchLength) {
+      return;
+    }
+
+    const searchLink = HttpService.generateSearchLink(queryString);
+
+    this.httpClient.get(searchLink)
       .pipe(
-        map((data: any) => this.filterGetResponse(data)),
+        map((data: any) => HttpService.filterGetSearchResponse(data)),
+        switchMap((data: string) => this.httpClient.get(HttpService.generateVideoLink(data))),
+        map((data: any) => HttpService.filterGetVideoResponse(data))
       )
       .subscribe((data: ICardData[]) => this.response.next(data));
   }
 
-  private filterGetResponse(data: IYoutubeAnswer): ICardData[] {
+  private static generateSearchLink(queryString: string): string {
+    return setting.urlConstants.baseSearchUrl + HttpService.generateQueryString([
+      'type=video',
+      `part=${setting.stringConstants.searchPart}`,
+      `maxResults=${setting.numberConstants.maxResults}`,
+      `q=${queryString}`
+    ]);
+  }
+
+  private static generateVideoLink(ids: string): string {
+    return setting.urlConstants.baseVideoUrl + HttpService.generateQueryString([
+      `part=${setting.stringConstants.videoPart}`,
+      `id=${ids}`,
+    ]);
+  }
+
+  private static generateQueryString(queryParams: string[] = []) {
+    return queryParams.length ? `?${queryParams.join('&')}`
+      : '';
+  }
+
+  private static filterGetSearchResponse(data: any): string {
+    const videosId: string[] = [];
+
+    data.items.forEach((item: any) => {
+      videosId.push(item.id.videoId);
+    });
+
+    return videosId.join(',')
+  }
+
+  private static filterGetVideoResponse(data: IYoutubeAnswer): ICardData[] {
     const cards: ICardData[] = [];
 
     data.items.forEach((item: IYoutubeResponseItem) => {

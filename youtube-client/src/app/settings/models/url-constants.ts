@@ -9,4 +9,6 @@ export const urlConstants = {
     max: '/maxresdefault.jpg',
   },
   requestUrl: '../../../assets/answer-example.json',
+  baseSearchUrl: 'https://www.googleapis.com/youtube/v3/search',
+  baseVideoUrl: 'https://www.googleapis.com/youtube/v3/video',
 };
