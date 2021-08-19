@@ -1,6 +1,6 @@
-import { IThumbnail } from './thumbnail';
+import { IThumbnail } from '../thumbnail';
 
-export interface IYoutubeResponseItem {
+export interface IYoutubeVideoResponseItem {
   kind: string;
   etag: string;
   id: string;

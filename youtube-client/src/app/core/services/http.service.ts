@@ -5,8 +5,10 @@ import { setting } from 'src/app/settings/setting';
 import { map, switchMap } from 'rxjs/operators';
 
 import { ICardData } from 'src/app/youtube/models/card-data-interface';
-import { IYoutubeAnswer } from '../models/youtube-search-response/youtube-answer-interface';
-import { IYoutubeResponseItem } from '../models/youtube-search-response/response-item';
+import { IYoutubeVideoResponse } from '../models/youtube-video-response/youtube-answer-interface';
+import { IYoutubeVideoResponseItem } from '../models/youtube-video-response/response-item';
+import { IYoutubeSearchResponse } from '../models/youtube-search-response/youtube-response';
+import { IYoutubeSearchResponseItem } from '../models/youtube-search-response/youtube-response-item';
 
 @Injectable({
   providedIn: 'root',
@@ -57,20 +59,20 @@ export class HttpService {
       : '';
   }
 
-  private static filterGetSearchResponse(data: any): string {
+  private static filterGetSearchResponse(data: IYoutubeSearchResponse): string {
     const videosId: string[] = [];
 
-    data.items.forEach((item: any) => {
+    data.items.forEach((item: IYoutubeSearchResponseItem) => {
       videosId.push(item.id.videoId);
     });
 
     return videosId.join(',')
   }
 
-  private static filterGetVideoResponse(data: IYoutubeAnswer): ICardData[] {
+  private static filterGetVideoResponse(data: IYoutubeVideoResponse): ICardData[] {
     const cards: ICardData[] = [];
 
-    data.items.forEach((item: IYoutubeResponseItem) => {
+    data.items.forEach((item: IYoutubeVideoResponseItem) => {
       const cardData: ICardData = {
         id: item.id,
         title: item.snippet.title,
