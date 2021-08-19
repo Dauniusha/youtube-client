@@ -1,8 +1,14 @@
 <p class="header-name">Your name</p>
-<button mat-raised-button class="header-btn" id="account">
-  <!-- <img class="avatar" src="../../../../assets/header/user.svg" alt="avatar"> -->
-  <mat-icon class="header-icon">person_outline</mat-icon>
-</button>
-<button mat-raised-button class="header-btn" id="logout" (click)="loginService.logout()">
-  <mat-icon class="header-icon">logout</mat-icon>
-</button>
+<div *ngIf="isLogin | async; then logout else login"></div>
+
+<ng-template #login>
+  <button mat-raised-button class="header-btn" title="login" (click)="loginService.login()">
+    <mat-icon class="header-icon">person_outline</mat-icon>
+  </button>
+</ng-template>
+
+<ng-template #logout>
+  <button mat-raised-button class="header-btn" title="logout" (click)="loginService.logout()">
+    <mat-icon class="header-icon">logout</mat-icon>
+  </button>
+</ng-template>

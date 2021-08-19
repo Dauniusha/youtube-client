@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { LoginService } from 'src/app/authentication/services/login.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { LoginService } from 'src/app/authentication/services/login.service';
 export class UserProfileComponent implements OnInit {
   private name: string = '';
 
-  private avatarURL: string = '';
+  public isLogin: Observable<boolean> = this.loginService.loginState$;
 
   constructor(
     public loginService: LoginService,
