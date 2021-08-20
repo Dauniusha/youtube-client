@@ -1,7 +1,4 @@
-import {
-  Component, EventEmitter, OnInit, Output,
-} from '@angular/core';
-import { Sort } from '@angular/material/sort';
+import { Component, OnInit } from '@angular/core';
 import { SortingService } from 'src/app/core/services/sorting.service';
 
 @Component({
@@ -10,10 +7,6 @@ import { SortingService } from 'src/app/core/services/sorting.service';
   styleUrls: ['./sorting-bar.component.scss'],
 })
 export class SortingBarComponent implements OnInit {
-  @Output() onSortingByWord = new EventEmitter<string>();
-
-  @Output() onChangeSort = new EventEmitter<Sort>();
-
   public queryString: string = '';
 
   constructor(public sortingService: SortingService) { }

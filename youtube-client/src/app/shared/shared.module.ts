@@ -10,15 +10,15 @@ import { SetColorDatePlaceholderDirective } from './directives/set-color-date-pl
     CardStatisticsComponent,
     StatisticsFilterPipe,
 
-    SetColorDatePlaceholderDirective
+    SetColorDatePlaceholderDirective,
   ],
   imports: [
     CommonModule,
-    MatIconModule
+    MatIconModule,
   ],
   exports: [
     CardStatisticsComponent,
-    SetColorDatePlaceholderDirective
+    SetColorDatePlaceholderDirective,
   ],
 })
 export class SharedModule { }

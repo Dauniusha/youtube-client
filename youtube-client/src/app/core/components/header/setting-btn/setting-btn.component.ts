@@ -10,7 +10,7 @@ import {
 export class SettingBtnComponent implements OnInit {
   public isOpened: boolean = false;
 
-  @Output() onOpened = new EventEmitter<boolean>();
+  @Output() opened = new EventEmitter<boolean>();
 
   constructor() { }
 
@@ -18,6 +18,6 @@ export class SettingBtnComponent implements OnInit {
 
   public changeOpenedState() {
     this.isOpened = !this.isOpened;
-    this.onOpened.emit(this.isOpened);
+    this.opened.emit(this.isOpened);
   }
 }

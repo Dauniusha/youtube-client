@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { DetailedInformationComponent } from 'src/app/youtube/pages/detailed-information/detailed-information.component';
 import { RouterModule } from '@angular/router';
 import { MiniCardComponent } from '../../components/mini-card/mini-card.component';
 import { MainComponent } from './main.component';
@@ -21,7 +20,7 @@ import { MainRoutingModule } from './main-routing.module';
 
     TitleFilterPipe,
     FilterByWordPipe,
-    SortingPipe
+    SortingPipe,
   ],
   imports: [
     CommonModule,
@@ -29,7 +28,7 @@ import { MainRoutingModule } from './main-routing.module';
     MatButtonModule,
     SharedModule,
     RouterModule,
-    MainRoutingModule
+    MainRoutingModule,
   ],
 })
 export class MainModule { }

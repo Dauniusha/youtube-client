@@ -33,9 +33,18 @@ export class HttpService {
       .pipe(
         map((data: any) => HttpService.filterGetSearchResponse(data)),
         switchMap((data: string) => this.httpClient.get(HttpService.generateVideoLink(data))),
-        map((data: any) => HttpService.filterGetVideoResponse(data))
+        map((data: any) => HttpService.filterGetVideoResponse(data)),
       )
       .subscribe((data: ICardData[]) => this.response.next(data));
+  }
+
+  public getCardById(id: string) {
+    const videoLink = HttpService.generateVideoLink(id);
+
+    return this.httpClient.get(videoLink)
+      .pipe(
+        map((data: any) => HttpService.filterGetVideoResponse(data)),
+      );
   }
 
   private static generateSearchLink(queryString: string): string {
@@ -43,7 +52,7 @@ export class HttpService {
       'type=video',
       `part=${setting.stringConstants.searchPart}`,
       `maxResults=${setting.numberConstants.maxResults}`,
-      `q=${queryString}`
+      `q=${queryString}`,
     ]);
   }
 
@@ -66,7 +75,7 @@ export class HttpService {
       videosId.push(item.id.videoId);
     });
 
-    return videosId.join(',')
+    return videosId.join(',');
   }
 
   private static filterGetVideoResponse(data: IYoutubeVideoResponse): ICardData[] {

@@ -14,7 +14,7 @@ export class LoginService {
   constructor(
     private router: Router,
   ) {
-    const initialState = localStorage.getItem(setting.stringConstants.storeNames.token) ? true : false;
+    const initialState = !!localStorage.getItem(setting.stringConstants.storeNames.token);
 
     this.loginState = new BehaviorSubject(initialState);
     this.loginState$ = this.loginState.asObservable();

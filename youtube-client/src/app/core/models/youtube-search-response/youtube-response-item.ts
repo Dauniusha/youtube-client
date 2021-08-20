@@ -1,4 +1,4 @@
-import { IThumbnail } from "../thumbnail";
+import { IThumbnail } from '../thumbnail';
 
 export interface IYoutubeSearchResponseItem {
   kind: string;
@@ -12,7 +12,7 @@ export interface IYoutubeSearchResponseItem {
     channelId: string;
     title: string;
     description: string;
-    
+
     thumbnails: {
       default: IThumbnail;
       medium: IThumbnail;

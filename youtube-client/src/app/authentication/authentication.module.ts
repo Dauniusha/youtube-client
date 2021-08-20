@@ -13,7 +13,7 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
   imports: [
     CommonModule,
     MatButtonModule,
-    AuthenticationRoutingModule
+    AuthenticationRoutingModule,
   ],
 })
 export class AuthenticationModule { }

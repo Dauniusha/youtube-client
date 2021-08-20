@@ -1,4 +1,4 @@
-import { IYoutubeSearchResponseItem } from "./youtube-response-item";
+import { IYoutubeSearchResponseItem } from './youtube-response-item';
 
 export interface IYoutubeSearchResponse {
   kind: string;
