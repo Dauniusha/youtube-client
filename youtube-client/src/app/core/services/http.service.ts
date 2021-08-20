@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { setting } from 'src/app/settings/setting';
 import { map, switchMap, tap } from 'rxjs/operators';
 
@@ -80,19 +80,17 @@ export class HttpService {
   }
 
   private static filterGetVideoResponse(data: IYoutubeVideoResponse): ICardData[] {
-    return data.items.map((item: IYoutubeVideoResponseItem) => {
-      return {
-        id: item.id,
-        title: item.snippet.title,
-        description: item.snippet.description,
-        statistics: {
-          likeCount: item.statistics.likeCount,
-          dislikeCount: item.statistics.dislikeCount,
-          viewCount: item.statistics.viewCount,
-          commentCount: item.statistics.commentCount,
-        },
-        date: new Date(item.snippet.publishedAt),
-      };
-    });
+    return data.items.map((item: IYoutubeVideoResponseItem) => ({
+      id: item.id,
+      title: item.snippet.title,
+      description: item.snippet.description,
+      statistics: {
+        likeCount: item.statistics.likeCount,
+        dislikeCount: item.statistics.dislikeCount,
+        viewCount: item.statistics.viewCount,
+        commentCount: item.statistics.commentCount,
+      },
+      date: new Date(item.snippet.publishedAt),
+    }));
   }
 }

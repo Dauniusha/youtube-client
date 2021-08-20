@@ -10,7 +10,7 @@ import { LoginService } from '../../services/login.service';
 export class LoginComponent implements OnInit {
   constructor(
     public loginService: LoginService,
-    private router: Router
+    private router: Router,
   ) {
     this.loginService.loginState$.subscribe((isLogged: boolean) => {
       if (isLogged) {

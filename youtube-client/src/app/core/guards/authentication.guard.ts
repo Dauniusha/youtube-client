@@ -10,8 +10,8 @@ import { setting } from '../../settings/setting';
 })
 export class AuthenticationGuard implements CanActivate {
   constructor(
-      private router: Router
-    ) { }
+    private router: Router,
+  ) { }
 
   public canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (localStorage.getItem(setting.stringConstants.storeNames.token)) {

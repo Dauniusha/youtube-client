@@ -1,7 +1,5 @@
-import {
-  Component, ElementRef, OnDestroy, OnInit, ViewChild,
-} from '@angular/core';
-import { fromEvent, Subject, Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { HttpService } from 'src/app/core/services/http.service';
 
@@ -16,12 +14,11 @@ export class SearchBarComponent implements OnInit {
   constructor(private httpService: HttpService) { }
 
   public ngOnInit(): void {
-
     this.filterSubject.pipe(
       map((event: any) => (<HTMLInputElement> event.target).value), // TODO: не знаю, как пофиксить any
       debounceTime(500),
       distinctUntilChanged(),
     )
-    .subscribe((data: string) => this.httpService.getCards(data));
+      .subscribe((data: string) => this.httpService.getCards(data));
   }
 }
