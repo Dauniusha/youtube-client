@@ -10,21 +10,18 @@ import { MainComponent } from './main.component';
 
 import { TitleFilterPipe } from '../../pipes/title-filter.pipe';
 
-import { SetColorDatePlaceholderDirective } from '../../directives/set-color-date-placeholder.directive';
 import { FilterByWordPipe } from '../../pipes/filter-by-word.pipe';
 import { SortingPipe } from '../../pipes/sorting.pipe';
+import { MainRoutingModule } from './main-routing.module';
 
 @NgModule({
   declarations: [
     MainComponent,
     MiniCardComponent,
-    DetailedInformationComponent,
 
     TitleFilterPipe,
     FilterByWordPipe,
-    SortingPipe,
-
-    SetColorDatePlaceholderDirective,
+    SortingPipe
   ],
   imports: [
     CommonModule,
@@ -32,6 +29,7 @@ import { SortingPipe } from '../../pipes/sorting.pipe';
     MatButtonModule,
     SharedModule,
     RouterModule,
+    MainRoutingModule
   ],
 })
 export class MainModule { }

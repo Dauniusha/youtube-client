@@ -2,15 +2,23 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthenticationGuard } from './core/guards/authentication.guard';
 
-import { LoginComponent } from './authentication/pages/login/login.component';
 import { ErrorComponent } from './core/pages/error/error.component';
-import { MainComponent } from './youtube/pages/main/main.component';
-import { DetailedInformationComponent } from './youtube/pages/detailed-information/detailed-information.component';
 
 const routes: Routes = [
-  { path: '', component: MainComponent, canActivate: [AuthenticationGuard] },
-  { path: 'login', component: LoginComponent },
-  { path: 'video/:id', component: DetailedInformationComponent, canActivate: [AuthenticationGuard] },
+  {
+    path: '',
+    loadChildren: () => import('./youtube/pages/main/main.module').then((m) => m.MainModule),
+    canActivate: [AuthenticationGuard],
+  },
+  {
+    path: 'video/:id',
+    loadChildren: () => import('./youtube/pages/detailed-information/detailed-information.module').then((m) => m.DetailedInformationModule),
+    canActivate: [AuthenticationGuard],
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./authentication/authentication.module').then((m) => m.AuthenticationModule),
+  },
   { path: '**', component: ErrorComponent },
 ];
 

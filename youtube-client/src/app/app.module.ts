@@ -6,9 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthenticationModule } from './authentication/authentication.module';
 import { CoreModule } from './core/core.module';
-import { YoutubeModule } from './youtube/youtube.module';
 import { YoutubeInterceptor } from './core/services/http-interceptor';
 
 @NgModule({
@@ -22,8 +20,6 @@ import { YoutubeInterceptor } from './core/services/http-interceptor';
     HttpClientModule,
     FormsModule,
 
-    AuthenticationModule,
-    YoutubeModule,
     CoreModule,
   ],
   providers: [
