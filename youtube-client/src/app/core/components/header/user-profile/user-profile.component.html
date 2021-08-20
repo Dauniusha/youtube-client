@@ -2,7 +2,7 @@
 <div *ngIf="isLogin | async; then logout else login"></div>
 
 <ng-template #login>
-  <button mat-raised-button class="header-btn" title="login" (click)="loginService.login()">
+  <button mat-raised-button class="header-btn" title="login" (click)="loginService.goToLogin()">
     <mat-icon class="header-icon">person_outline</mat-icon>
   </button>
 </ng-template>

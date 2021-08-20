@@ -17,14 +17,12 @@ import { LoadingService } from './loading.service';
 export class HttpService {
   isFirst = true;
 
-  private response: BehaviorSubject<ICardData[]> = new BehaviorSubject(<ICardData[]> []);
-
-  public response$: Observable<ICardData[]> = this.response.asObservable();
+  public response: BehaviorSubject<ICardData[]> = new BehaviorSubject(<ICardData[]> []);
 
   constructor(
-      private httpClient: HttpClient,
-      private loadingService: LoadingService
-    ) { }
+    private httpClient: HttpClient,
+    private loadingService: LoadingService,
+  ) { }
 
   public getCards(queryString: string) {
     if (queryString.length < setting.numberConstants.minSearchLength) {
@@ -76,20 +74,14 @@ export class HttpService {
   }
 
   private static filterGetSearchResponse(data: IYoutubeSearchResponse): string {
-    const videosId: string[] = [];
+    const idString = data.items.map((item: IYoutubeSearchResponseItem) => item.id.videoId);
 
-    data.items.forEach((item: IYoutubeSearchResponseItem) => {
-      videosId.push(item.id.videoId);
-    });
-
-    return videosId.join(',');
+    return idString.join(',');
   }
 
   private static filterGetVideoResponse(data: IYoutubeVideoResponse): ICardData[] {
-    const cards: ICardData[] = [];
-
-    data.items.forEach((item: IYoutubeVideoResponseItem) => {
-      const cardData: ICardData = {
+    return data.items.map((item: IYoutubeVideoResponseItem) => {
+      return {
         id: item.id,
         title: item.snippet.title,
         description: item.snippet.description,
@@ -101,10 +93,6 @@ export class HttpService {
         },
         date: new Date(item.snippet.publishedAt),
       };
-
-      cards.push(cardData);
     });
-
-    return cards;
   }
 }

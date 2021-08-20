@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { setting } from 'src/app/settings/setting';
 import { HttpService } from 'src/app/core/services/http.service';
-import { ICardData } from '../../models/card-data-interface';
 import { LoadingService } from 'src/app/core/services/loading.service';
+import { ICardData } from '../../models/card-data-interface';
 
 @Component({
   selector: 'app-detailed-information',
@@ -21,7 +21,7 @@ export class DetailedInformationComponent implements OnInit {
     private httpService: HttpService,
     private activatedRoute: ActivatedRoute,
     public router: Router,
-    public loadingService: LoadingService
+    public loadingService: LoadingService,
   ) { }
 
   public ngOnInit(): void {

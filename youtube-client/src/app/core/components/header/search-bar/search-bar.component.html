@@ -4,6 +4,6 @@
     type="text"
     placeholder="What do you want to find out?"
     name="search"
-    #input
+    (input)="filterSubject.next($event)"
   >
 </form>

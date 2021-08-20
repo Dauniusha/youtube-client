@@ -22,7 +22,7 @@ import { LoadersComponent } from './components/loaders/loaders.component';
   exports: [
     CardStatisticsComponent,
     SetColorDatePlaceholderDirective,
-    LoadersComponent
+    LoadersComponent,
   ],
 })
 export class SharedModule { }

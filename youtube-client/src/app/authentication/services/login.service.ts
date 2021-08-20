@@ -31,6 +31,10 @@ export class LoginService {
   public logout() {
     localStorage.removeItem(setting.stringConstants.storeNames.token);
     this.loginState.next(false);
+    this.goToLogin();
+  }
+
+  public goToLogin() {
     this.router.navigate(['login']);
   }
 
