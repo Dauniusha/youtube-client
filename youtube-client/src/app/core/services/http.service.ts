@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { setting } from 'src/app/settings/setting';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 
 import { ICardData } from 'src/app/youtube/models/card-data-interface';
 import { IYoutubeVideoResponse } from '../models/youtube-video-response/youtube-answer-interface';
 import { IYoutubeVideoResponseItem } from '../models/youtube-video-response/response-item';
 import { IYoutubeSearchResponse } from '../models/youtube-search-response/youtube-response';
 import { IYoutubeSearchResponseItem } from '../models/youtube-search-response/youtube-response-item';
+import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root',
@@ -20,12 +21,17 @@ export class HttpService {
 
   public response$: Observable<ICardData[]> = this.response.asObservable();
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+      private httpClient: HttpClient,
+      private loadingService: LoadingService
+    ) { }
 
   public getCards(queryString: string) {
     if (queryString.length < setting.numberConstants.minSearchLength) {
       return;
     }
+
+    this.loadingService.loading();
 
     const searchLink = HttpService.generateSearchLink(queryString);
 
@@ -34,6 +40,7 @@ export class HttpService {
         map((data: any) => HttpService.filterGetSearchResponse(data)),
         switchMap((data: string) => this.httpClient.get(HttpService.generateVideoLink(data))),
         map((data: any) => HttpService.filterGetVideoResponse(data)),
+        tap(() => this.loadingService.loaded()),
       )
       .subscribe((data: ICardData[]) => this.response.next(data));
   }

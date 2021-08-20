@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 import { Observable } from 'rxjs';
+import { LoadingService } from 'src/app/core/services/loading.service';
 import { SortingService } from 'src/app/core/services/sorting.service';
 import { HttpService } from '../../../core/services/http.service';
 import { ICardData } from '../../models/card-data-interface';
@@ -20,6 +21,7 @@ export class MainComponent implements OnInit {
   constructor(
     public httpService: HttpService,
     public sortingService: SortingService,
+    public loadingService: LoadingService
   ) { }
 
   public ngOnInit(): void {

@@ -1,6 +1,15 @@
-  <div class="cards__container">
+<div class="cards__container">
+
+  <div *ngIf="loadingService.isLoading; then loaders else loaded"></div>
+
+  <ng-template #loaders>
+    <app-loaders></app-loaders>
+  </ng-template>
+
+  <ng-template #loaded>
     <app-mini-card
       *ngFor="let card of cards | async | sorting: sortData?.active : sortData?.direction | filterByWord: sortingByWordQuery"
       [cardData]="card"
     ></app-mini-card>
-  </div>
+  </ng-template>
+</div>

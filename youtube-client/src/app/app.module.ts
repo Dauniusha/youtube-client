@@ -27,7 +27,7 @@ import { YoutubeInterceptor } from './core/services/http-interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: YoutubeInterceptor,
       multi: true,
-    },
+    }
   ],
   bootstrap: [AppComponent],
 })

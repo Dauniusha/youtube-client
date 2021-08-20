@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { setting } from 'src/app/settings/setting';
 import { HttpService } from 'src/app/core/services/http.service';
 import { ICardData } from '../../models/card-data-interface';
+import { LoadingService } from 'src/app/core/services/loading.service';
 
 @Component({
   selector: 'app-detailed-information',
@@ -20,6 +21,7 @@ export class DetailedInformationComponent implements OnInit {
     private httpService: HttpService,
     private activatedRoute: ActivatedRoute,
     public router: Router,
+    public loadingService: LoadingService
   ) { }
 
   public ngOnInit(): void {
@@ -32,7 +34,11 @@ export class DetailedInformationComponent implements OnInit {
       } else {
         this.router.navigate(['']); // TODO: create special page for bad request
       }
+
+      this.loadingService.loaded();
     }); */
+
+    this.loadingService.loading();
 
     const { id } = this.activatedRoute.snapshot.params;
 
@@ -45,6 +51,8 @@ export class DetailedInformationComponent implements OnInit {
       } else {
         this.router.navigate(['']); // TODO: create special page for bad request
       }
+
+      this.loadingService.loaded();
     });
   }
 }

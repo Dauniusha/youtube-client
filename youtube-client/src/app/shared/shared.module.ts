@@ -4,10 +4,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { StatisticsFilterPipe } from '../youtube/pipes/statistics-filter.pipe';
 import { CardStatisticsComponent } from './components/card-statistics/card-statistics.component';
 import { SetColorDatePlaceholderDirective } from './directives/set-color-date-placeholder.directive';
+import { LoadersComponent } from './components/loaders/loaders.component';
 
 @NgModule({
   declarations: [
     CardStatisticsComponent,
+    LoadersComponent,
+
     StatisticsFilterPipe,
 
     SetColorDatePlaceholderDirective,
@@ -19,6 +22,7 @@ import { SetColorDatePlaceholderDirective } from './directives/set-color-date-pl
   exports: [
     CardStatisticsComponent,
     SetColorDatePlaceholderDirective,
+    LoadersComponent
   ],
 })
 export class SharedModule { }
