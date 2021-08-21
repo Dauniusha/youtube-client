@@ -5,11 +5,13 @@ import { StatisticsFilterPipe } from '../youtube/pipes/statistics-filter.pipe';
 import { CardStatisticsComponent } from './components/card-statistics/card-statistics.component';
 import { SetColorDatePlaceholderDirective } from './directives/set-color-date-placeholder.directive';
 import { LoadersComponent } from './components/loaders/loaders.component';
+import { InputComponent } from './components/input/input.component';
 
 @NgModule({
   declarations: [
     CardStatisticsComponent,
     LoadersComponent,
+    InputComponent,
 
     StatisticsFilterPipe,
 
@@ -23,6 +25,7 @@ import { LoadersComponent } from './components/loaders/loaders.component';
     CardStatisticsComponent,
     SetColorDatePlaceholderDirective,
     LoadersComponent,
+    InputComponent
   ],
 })
 export class SharedModule { }

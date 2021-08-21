@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LoginService } from 'src/app/authentication/services/login.service';
 
@@ -14,6 +15,7 @@ export class UserProfileComponent implements OnInit {
 
   constructor(
     public loginService: LoginService,
+    public router: Router
   ) { }
 
   public ngOnInit(): void {

@@ -10,6 +10,7 @@ import { IYoutubeVideoResponseItem } from '../models/youtube-video-response/resp
 import { IYoutubeSearchResponse } from '../models/youtube-search-response/youtube-response';
 import { IYoutubeSearchResponseItem } from '../models/youtube-search-response/youtube-response-item';
 import { LoadingService } from './loading.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -22,10 +23,11 @@ export class HttpService {
   constructor(
     private httpClient: HttpClient,
     private loadingService: LoadingService,
+    private router: Router
   ) { }
 
   public getCards(queryString: string) {
-    if (queryString.length < setting.numberConstants.minSearchLength) {
+    if (queryString.length < setting.numberConstants.minSearchLength || this.router.url !== '/') {
       return;
     }
 

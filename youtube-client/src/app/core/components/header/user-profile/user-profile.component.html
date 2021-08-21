@@ -11,4 +11,7 @@
   <button mat-raised-button class="header-btn" title="logout" (click)="loginService.logout()">
     <mat-icon class="header-icon">logout</mat-icon>
   </button>
+  <button mat-raised-button class="header-btn" title="create new card" id="create" (click)="router.navigate(['create'])">
+    <mat-icon class="header-icon">add</mat-icon>
+  </button>
 </ng-template>

@@ -16,6 +16,11 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard],
   },
   {
+    path: 'create',
+    loadChildren: () => import('./core/pages/create-card/create-card.module').then((m) => m.CreateCardModule),
+    canActivate: [AuthenticationGuard],
+  },
+  {
     path: 'login',
     loadChildren: () => import('./authentication/authentication.module').then((m) => m.AuthenticationModule),
   },
