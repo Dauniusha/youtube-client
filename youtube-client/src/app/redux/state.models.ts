@@ -1,0 +1,12 @@
+import { ICardData } from "src/app/youtube/models/card-data-interface";
+import { ICustomCardData } from "src/app/youtube/models/custom-card-data";
+
+export interface ICardsState {
+  youtubeCards: ICardData[];
+  customCards: ICustomCardData[];
+}
+
+export const initialCardsState: ICardsState = {
+  youtubeCards: [],
+  customCards: [],
+}

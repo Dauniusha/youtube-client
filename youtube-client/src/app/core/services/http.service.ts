@@ -9,8 +9,13 @@ import { IYoutubeVideoResponse } from '../models/youtube-video-response/youtube-
 import { IYoutubeVideoResponseItem } from '../models/youtube-video-response/response-item';
 import { IYoutubeSearchResponse } from '../models/youtube-search-response/youtube-response';
 import { IYoutubeSearchResponseItem } from '../models/youtube-search-response/youtube-response-item';
+import { ICardsState } from 'src/app/redux/state.models';
+
 import { LoadingService } from './loading.service';
+
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { loadYoutubeCards } from 'src/app/redux/actions/cards.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +28,8 @@ export class HttpService {
   constructor(
     private httpClient: HttpClient,
     private loadingService: LoadingService,
-    private router: Router
+    private router: Router,
+    private store: Store<ICardsState>
   ) { }
 
   public getCards(queryString: string) {
@@ -42,7 +48,10 @@ export class HttpService {
         map((data: any) => HttpService.filterGetVideoResponse(data)),
         tap(() => this.loadingService.loaded()),
       )
-      .subscribe((data: ICardData[]) => this.response.next(data));
+      .subscribe((data: ICardData[]) => {
+        this.store.dispatch(loadYoutubeCards({ cards: data }));
+        this.response.next(data);
+      });
   }
 
   public getCardById(id: string) {

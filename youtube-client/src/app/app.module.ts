@@ -8,6 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { YoutubeInterceptor } from './core/services/http-interceptor';
+import { StoreModule } from '@ngrx/store';
+import { youtubeCardsReducer } from './redux/reducers/cards.reducer';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { YoutubeInterceptor } from './core/services/http-interceptor';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    StoreModule.forRoot({ 'youtubeCards' : youtubeCardsReducer }),
 
     CoreModule,
   ],
