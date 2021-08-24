@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { setting } from 'src/app/settings/setting';
 import { map, switchMap, tap } from 'rxjs/operators';
 
@@ -21,10 +21,6 @@ import { cardsActionsMap } from 'src/app/redux/actions/cards.actions';
   providedIn: 'root',
 })
 export class HttpService {
-  isFirst = true;
-
-  public response: BehaviorSubject<ICardData[]> = new BehaviorSubject(<ICardData[]> []);
-
   constructor(
     private httpClient: HttpClient,
     private loadingService: LoadingService,
@@ -48,13 +44,10 @@ export class HttpService {
         map((data: any) => HttpService.filterGetVideoResponse(data)),
         tap(() => this.loadingService.loaded()),
       )
-      .subscribe((data: ICardData[]) => {
-        this.store.dispatch(cardsActionsMap.loadYoutube({ cards: data }));
-        this.response.next(data);
-      });
+      .subscribe((data: ICardData[]) => this.store.dispatch(cardsActionsMap.loadYoutube({ cards: data })));
   }
 
-  public getCardById(id: string) {
+  public getCardById(id: string): Observable<ICardData[]> {
     const videoLink = HttpService.generateVideoLink(id);
 
     return this.httpClient.get(videoLink)

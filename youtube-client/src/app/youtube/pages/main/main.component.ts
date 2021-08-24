@@ -19,7 +19,7 @@ export class MainComponent implements OnInit {
 
   public sortData?: Sort;
 
-  public cards: Observable<ICardData[]> = this.store.select(selectorCards.youtube); // = this.httpService.response;
+  public cards: Observable<ICardData[]> = this.store.select(selectorCards.youtube);
 
   constructor(
     public loadingService: LoadingService,

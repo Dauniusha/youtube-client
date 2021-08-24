@@ -9,7 +9,9 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { YoutubeInterceptor } from './core/services/http-interceptor';
 import { StoreModule } from '@ngrx/store';
-import { appReducers } from './redux/reducers/cards.reducer';
+import { appReducers } from './redux/reducers/app.reducer';
+import { environment } from 'src/environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,10 @@ import { appReducers } from './redux/reducers/cards.reducer';
     HttpClientModule,
     FormsModule,
     StoreModule.forRoot(appReducers),
-
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
     CoreModule,
   ],
   providers: [
