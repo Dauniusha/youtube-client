@@ -8,10 +8,10 @@
 </ng-template>
 
 <ng-template #logout>
-  <button mat-raised-button class="header-btn" title="logout" (click)="loginService.logout()">
-    <mat-icon class="header-icon">logout</mat-icon>
-  </button>
-  <button mat-raised-button class="header-btn" title="create new card" id="create" (click)="router.navigate(['create'])">
+  <button mat-raised-button class="header-btn" title="create new card" (click)="router.navigate(['create'])">
     <mat-icon class="header-icon">add</mat-icon>
+  </button>
+  <button mat-raised-button class="header-btn" title="logout" id="logout" (click)="loginService.logout()">
+    <mat-icon class="header-icon">logout</mat-icon>
   </button>
 </ng-template>

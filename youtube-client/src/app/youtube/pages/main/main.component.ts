@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 import { Store } from '@ngrx/store';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { SortingService } from 'src/app/core/services/sorting.service';
 import { selectorCards } from 'src/app/redux/selectors/cards.selectors';
 import { IAppState } from 'src/app/redux/state.models';
-import { HttpService } from '../../../core/services/http.service';
 import { ICardData } from '../../models/card-data-interface';
 
 @Component({
@@ -24,7 +23,7 @@ export class MainComponent implements OnInit {
   constructor(
     public loadingService: LoadingService,
     private sortingService: SortingService,
-    private store: Store<IAppState>
+    private store: Store<IAppState>,
   ) { }
 
   public ngOnInit(): void {

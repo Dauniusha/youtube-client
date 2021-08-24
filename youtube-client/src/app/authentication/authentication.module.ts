@@ -13,7 +13,7 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     MatButtonModule,
     AuthenticationRoutingModule,
-    SharedModule
+    SharedModule,
   ],
 })
 export class AuthenticationModule { }

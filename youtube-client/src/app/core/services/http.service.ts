@@ -5,17 +5,16 @@ import { setting } from 'src/app/settings/setting';
 import { map, switchMap, tap } from 'rxjs/operators';
 
 import { ICardData } from 'src/app/youtube/models/card-data-interface';
+import { ICardsState } from 'src/app/redux/state.models';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { cardsActionsMap } from 'src/app/redux/actions/cards.actions';
 import { IYoutubeVideoResponse } from '../models/youtube-video-response/youtube-answer-interface';
 import { IYoutubeVideoResponseItem } from '../models/youtube-video-response/response-item';
 import { IYoutubeSearchResponse } from '../models/youtube-search-response/youtube-response';
 import { IYoutubeSearchResponseItem } from '../models/youtube-search-response/youtube-response-item';
-import { ICardsState } from 'src/app/redux/state.models';
 
 import { LoadingService } from './loading.service';
-
-import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { cardsActionsMap } from 'src/app/redux/actions/cards.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +24,7 @@ export class HttpService {
     private httpClient: HttpClient,
     private loadingService: LoadingService,
     private router: Router,
-    private store: Store<ICardsState>
+    private store: Store<ICardsState>,
   ) { }
 
   public getCards(queryString: string) {

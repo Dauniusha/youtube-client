@@ -25,7 +25,7 @@ import { InputComponent } from './components/input/input.component';
     CardStatisticsComponent,
     SetColorDatePlaceholderDirective,
     LoadersComponent,
-    InputComponent
+    InputComponent,
   ],
 })
 export class SharedModule { }
