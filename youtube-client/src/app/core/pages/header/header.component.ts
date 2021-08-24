@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SortingBarService } from '../../services/sorting/sorting-bar.service';
 
 @Component({
   selector: 'app-header',
@@ -6,13 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  public sortingBarIsOpened: boolean = false;
-
-  constructor() { }
+  constructor(public sortingBarService: SortingBarService) { }
 
   public ngOnInit(): void { }
-
-  public toogleSortingBarState() {
-    this.sortingBarIsOpened = !this.sortingBarIsOpened;
-  }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-import { HttpService } from 'src/app/core/services/http.service';
+import { HttpService } from 'src/app/core/services/http/http.service';
 
 @Component({
   selector: 'app-search-bar',

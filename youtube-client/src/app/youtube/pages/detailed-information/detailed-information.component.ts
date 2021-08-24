@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { setting } from 'src/app/settings/setting';
-import { HttpService } from 'src/app/core/services/http.service';
-import { LoadingService } from 'src/app/core/services/loading.service';
+import { HttpService } from 'src/app/core/services/http/http.service';
+import { LoadingService } from 'src/app/core/services/loader/loading.service';
 import { ICardData } from '../../models/card-data-interface';
 
 @Component({

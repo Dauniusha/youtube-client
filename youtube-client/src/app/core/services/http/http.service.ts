@@ -9,12 +9,12 @@ import { ICardsState } from 'src/app/redux/state.models';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { cardsActionsMap } from 'src/app/redux/actions/cards.actions';
-import { IYoutubeVideoResponse } from '../models/youtube-video-response/youtube-answer-interface';
-import { IYoutubeVideoResponseItem } from '../models/youtube-video-response/response-item';
-import { IYoutubeSearchResponse } from '../models/youtube-search-response/youtube-response';
-import { IYoutubeSearchResponseItem } from '../models/youtube-search-response/youtube-response-item';
+import { IYoutubeVideoResponse } from '../../models/youtube-video-response/youtube-answer-interface';
+import { IYoutubeVideoResponseItem } from '../../models/youtube-video-response/response-item';
+import { IYoutubeSearchResponse } from '../../models/youtube-search-response/youtube-response';
+import { IYoutubeSearchResponseItem } from '../../models/youtube-search-response/youtube-response-item';
 
-import { LoadingService } from './loading.service';
+import { LoadingService } from '../loader/loading.service';
 
 @Injectable({
   providedIn: 'root',

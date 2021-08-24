@@ -10,7 +10,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { YoutubeInterceptor } from './core/services/http-interceptor';
+import { YoutubeInterceptor } from './core/services/http/http-interceptor';
 import { appReducers } from './redux/reducers/app.reducer';
 
 @NgModule({

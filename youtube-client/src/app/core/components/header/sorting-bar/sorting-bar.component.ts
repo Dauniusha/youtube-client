@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SortingService } from 'src/app/core/services/sorting.service';
+import { SortingService } from 'src/app/core/services/sorting/sorting.service';
 
 @Component({
   selector: 'app-sorting-bar',

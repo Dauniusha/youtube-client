@@ -1,6 +1,7 @@
 import {
   Component, OnInit, Output, EventEmitter,
 } from '@angular/core';
+import { SortingBarService } from 'src/app/core/services/sorting/sorting-bar.service';
 
 @Component({
   selector: 'app-setting-btn',
@@ -8,16 +9,11 @@ import {
   styleUrls: ['./setting-btn.component.scss'],
 })
 export class SettingBtnComponent implements OnInit {
-  public isOpened: boolean = false;
-
-  @Output() opened = new EventEmitter<boolean>();
-
-  constructor() { }
+  constructor(public sortingBarService: SortingBarService) { }
 
   public ngOnInit(): void { }
 
   public changeOpenedState() {
-    this.isOpened = !this.isOpened;
-    this.opened.emit(this.isOpened);
+    this.sortingBarService.isOpened = !this.sortingBarService.isOpened;
   }
 }
