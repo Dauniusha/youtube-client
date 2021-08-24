@@ -15,7 +15,7 @@ import { LoadingService } from './loading.service';
 
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { loadYoutubeCards } from 'src/app/redux/actions/cards.actions';
+import { cardsActionsMap } from 'src/app/redux/actions/cards.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -49,7 +49,7 @@ export class HttpService {
         tap(() => this.loadingService.loaded()),
       )
       .subscribe((data: ICardData[]) => {
-        this.store.dispatch(loadYoutubeCards({ cards: data }));
+        this.store.dispatch(cardsActionsMap.loadYoutube({ cards: data }));
         this.response.next(data);
       });
   }

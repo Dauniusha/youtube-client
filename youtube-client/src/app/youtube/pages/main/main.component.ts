@@ -4,7 +4,8 @@ import { Store } from '@ngrx/store';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { SortingService } from 'src/app/core/services/sorting.service';
-import { ICardsState } from 'src/app/redux/state.models';
+import { selectorCards } from 'src/app/redux/selectors/cards.selectors';
+import { IAppState } from 'src/app/redux/state.models';
 import { HttpService } from '../../../core/services/http.service';
 import { ICardData } from '../../models/card-data-interface';
 
@@ -18,19 +19,13 @@ export class MainComponent implements OnInit {
 
   public sortData?: Sort;
 
-  public cards: BehaviorSubject<ICardData[]> = this.httpService.response;
+  public cards: Observable<ICardData[]> = this.store.select(selectorCards.youtube); // = this.httpService.response;
 
   constructor(
-    public httpService: HttpService,
-    public sortingService: SortingService,
     public loadingService: LoadingService,
-    private store: Store<ICardsState>
-  ) {
-    store.select('youtubeCards').subscribe((data) => {
-      console.log(data);
-    });
-    // this.cards = store.select('youtubeCards');
-  }
+    private sortingService: SortingService,
+    private store: Store<IAppState>
+  ) { }
 
   public ngOnInit(): void {
     this.sortingService.sorting.subscribe((sortData) => this.sortData = sortData);
