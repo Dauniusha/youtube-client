@@ -20,7 +20,8 @@ export class LoginService {
     this.loginState$ = this.loginState.asObservable();
   }
 
-  public login() {
+  public login(event: Event) {
+    event.preventDefault();
     const token = LoginService.getToken();
 
     localStorage.setItem(setting.stringConstants.storeNames.token, token);
