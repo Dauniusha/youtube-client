@@ -25,7 +25,7 @@ export class MainComponent implements OnInit {
     public loadingService: LoadingService,
     private sortingService: SortingService,
     private store: Store<IAppState>,
-    public sortingBarService: SortingBarService
+    public sortingBarService: SortingBarService,
   ) { }
 
   public ngOnInit(): void {

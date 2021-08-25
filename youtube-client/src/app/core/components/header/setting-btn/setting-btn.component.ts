@@ -1,6 +1,4 @@
-import {
-  Component, OnInit, Output, EventEmitter,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SortingBarService } from 'src/app/core/services/sorting/sorting-bar.service';
 
 @Component({
