@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card__container">
-    <img class="card__preview" [src]="previewLink" alt="preview">
-
+    <app-card-preview [previewLink]="previewLink"></app-card-preview>
+    
     <app-card-statistics [statistics]="data?.statistics"></app-card-statistics>
 
     <h2 class="card__title">{{data?.title | titleFilter}}</h2>
