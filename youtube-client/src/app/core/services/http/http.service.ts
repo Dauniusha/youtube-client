@@ -51,8 +51,8 @@ export class HttpService {
   }
 
   public getCardById(id: string) {
-    this.store.select(selectorCards.custom).subscribe((data: ICustomCardData[]) => {
-      const customCard = data.find((card: ICustomCardData) => card.inputData.videoLink.indexOf(id) !== -1);
+    this.store.select(selectorCards.custom).subscribe((customCards: ICustomCardData[]) => {
+      const customCard = customCards.find((card: ICustomCardData) => card.inputData.videoLink.indexOf(id) !== -1);
 
       if (customCard) {
         const youtubeCardProto: ICardData = {
