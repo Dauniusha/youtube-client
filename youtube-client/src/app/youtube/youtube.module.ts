@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CustomMiniCardComponent } from './components/custom-mini-card/custom-mini-card.component';
 
 @NgModule({
-  declarations: [
-    CustomMiniCardComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
   ],

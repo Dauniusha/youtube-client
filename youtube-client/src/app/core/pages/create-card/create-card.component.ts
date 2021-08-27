@@ -20,7 +20,12 @@ enum KeyNameAccordance {
   styleUrls: ['./create-card.component.scss'],
 })
 export class CreateCardComponent implements OnInit {
-  public cardData: ICustomCardInputData = <ICustomCardInputData>{ };
+  public cardData: ICustomCardInputData = {
+    title: '',
+    description: '',
+    imgLink: '',
+    videoLink: '',
+  };
 
   constructor(
     private store: Store<IAppState>,

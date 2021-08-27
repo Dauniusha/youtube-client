@@ -4,6 +4,7 @@ export interface ICardData {
   id: string;
   title: string;
   description: string;
-  statistics: ICardStatistics;
   date: Date;
+  statistics?: ICardStatistics;
+  imgLink?: string;
 }

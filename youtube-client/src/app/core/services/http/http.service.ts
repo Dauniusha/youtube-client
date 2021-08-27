@@ -1,30 +1,34 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 import { setting } from 'src/app/settings/setting';
 import { map, switchMap, tap } from 'rxjs/operators';
 
 import { ICardData } from 'src/app/youtube/models/card-data-interface';
-import { ICardsState } from 'src/app/redux/state.models';
+import { IAppState } from 'src/app/redux/state.models';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { cardsActionsMap } from 'src/app/redux/actions/cards.actions';
+import { selectorCards } from 'src/app/redux/selectors/cards.selectors';
 import { IYoutubeVideoResponse } from '../../models/youtube-video-response/youtube-answer-interface';
 import { IYoutubeVideoResponseItem } from '../../models/youtube-video-response/response-item';
 import { IYoutubeSearchResponse } from '../../models/youtube-search-response/youtube-response';
 import { IYoutubeSearchResponseItem } from '../../models/youtube-search-response/youtube-response-item';
 
 import { LoadingService } from '../loader/loading.service';
+import { ICustomCardData } from '../../models/custom-card/custom-card-data';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HttpService {
+  public detailedCardData: ReplaySubject<ICardData[]> = new ReplaySubject();
+
   constructor(
     private httpClient: HttpClient,
     private loadingService: LoadingService,
     private router: Router,
-    private store: Store<ICardsState>,
+    private store: Store<IAppState>,
   ) { }
 
   public getCards(queryString: string) {
@@ -46,13 +50,30 @@ export class HttpService {
       .subscribe((data: ICardData[]) => this.store.dispatch(cardsActionsMap.loadYoutube({ cards: data })));
   }
 
-  public getCardById(id: string): Observable<ICardData[]> {
-    const videoLink = HttpService.generateVideoLink(id);
+  public getCardById(id: string) {
+    this.store.select(selectorCards.custom).subscribe((data: ICustomCardData[]) => {
+      const customCard = data.find((card: ICustomCardData) => card.inputData.videoLink.indexOf(id) !== -1);
 
-    return this.httpClient.get(videoLink)
-      .pipe(
-        map((data: any) => HttpService.filterGetVideoResponse(data)),
-      );
+      if (customCard) {
+        const youtubeCardProto: ICardData = {
+          id,
+          title: customCard.inputData.title,
+          description: customCard.inputData.description,
+          date: customCard.date,
+          imgLink: customCard.inputData.imgLink,
+        };
+
+        this.detailedCardData.next([youtubeCardProto]);
+      } else {
+        const videoLink = HttpService.generateVideoLink(id);
+
+        this.httpClient.get(videoLink)
+          .pipe(
+            map((data: any) => HttpService.filterGetVideoResponse(data)),
+          )
+          .subscribe((data: ICardData[]) => this.detailedCardData.next(data));
+      }
+    });
   }
 
   private static generateSearchLink(queryString: string): string {

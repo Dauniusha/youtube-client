@@ -24,7 +24,8 @@ export class SortingPipe implements PipeTransform {
         case 'date':
           return SortingPipe.compaire(a.date, b.date, isAsc);
         case 'viewCount':
-          return SortingPipe.compaire(Number(a.statistics.viewCount), Number(b.statistics.viewCount), isAsc);
+          return a.statistics && b.statistics
+            ? SortingPipe.compaire(Number(a.statistics.viewCount), Number(b.statistics.viewCount), isAsc) : 1;
         default:
           throw new Error('This categoties does not exist!');
       }

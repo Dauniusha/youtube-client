@@ -8,9 +8,9 @@ describe('CustomMiniCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CustomMiniCardComponent ]
+      declarations: [CustomMiniCardComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

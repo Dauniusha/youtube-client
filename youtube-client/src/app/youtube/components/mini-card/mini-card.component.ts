@@ -1,20 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component, Input, OnInit, ViewEncapsulation,
+} from '@angular/core';
 import { setting } from 'src/app/settings/setting';
 import { ICardData } from '../../models/card-data-interface';
+import { CardProto } from '../../models/card-proto';
 
 @Component({
   selector: 'app-mini-card',
   templateUrl: './mini-card.component.html',
   styleUrls: ['./mini-card.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class MiniCardComponent implements OnInit {
+export class MiniCardComponent extends CardProto<ICardData> implements OnInit {
   public videoLink: string = '';
 
   public previewLink: string = '';
-
-  public date: Date = new Date();
-
-  public data?: ICardData;
 
   @Input() set cardData(data: ICardData) {
     this.data = data;
@@ -25,7 +25,9 @@ export class MiniCardComponent implements OnInit {
     this.previewLink = setting.urlConstants.previewLink + data.id + setting.urlConstants.previewQuality.medium;
   }
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   public ngOnInit(): void {
   }

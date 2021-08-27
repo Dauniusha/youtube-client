@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { ICustomCardData } from 'src/app/core/models/custom-card/custom-card-data';
 import { LoadingService } from 'src/app/core/services/loader/loading.service';
 import { SortingBarService } from 'src/app/core/services/sorting/sorting-bar.service';
 import { SortingService } from 'src/app/core/services/sorting/sorting.service';
@@ -18,6 +19,8 @@ export class MainComponent implements OnInit {
   public sortingByWordQuery: string = '';
 
   public sortData?: Sort;
+
+  public customCards: Observable<ICustomCardData[]> = this.store.select(selectorCards.custom);
 
   public cards: Observable<ICardData[]> = this.store.select(selectorCards.youtube);
 

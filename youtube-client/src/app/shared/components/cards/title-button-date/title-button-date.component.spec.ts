@@ -8,9 +8,9 @@ describe('TitleButtonDateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TitleButtonDateComponent ]
+      declarations: [TitleButtonDateComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -42,12 +42,17 @@ export class DetailedInformationComponent implements OnInit {
 
     const { id } = this.activatedRoute.snapshot.params;
 
-    this.httpService.getCardById(id).subscribe((cardsData: ICardData[]) => {
+    this.httpService.getCardById(id);
+
+    this.httpService.detailedCardData.subscribe((cardsData: ICardData[]) => {
       [this.data] = cardsData;
 
       if (this.data) {
         this.date = new Date(this.data.date);
-        this.previewLink = setting.urlConstants.previewLink + this.data.id + setting.urlConstants.previewQuality.default;
+
+        this.previewLink = this.data.imgLink
+          ? this.data.imgLink
+          : setting.urlConstants.previewLink + this.data.id + setting.urlConstants.previewQuality.default;
       } else {
         this.router.navigate(['']); // TODO: create special page for bad request
       }

@@ -1,9 +1,9 @@
-import { Sort } from "@angular/material/sort";
-import { SortingService } from "./sorting.service";
+import { Sort } from '@angular/material/sort';
+import { SortingService } from './sorting.service';
 
 describe('Sorting service', () => {
   let sortingService: SortingService;
-  
+
   beforeEach(() => {
     sortingService = new SortingService();
   });

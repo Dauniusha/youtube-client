@@ -1,4 +1,4 @@
-import { LoadingService } from "./loading.service";
+import { LoadingService } from './loading.service';
 
 describe('Loading service ', () => {
   let loadingService: LoadingService;
