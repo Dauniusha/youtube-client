@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TitleFilterPipe } from 'src/app/youtube/pipes/title-filter.pipe';
 
 import { TitleButtonDateComponent } from './title-button-date.component';
 
@@ -8,7 +9,10 @@ describe('TitleButtonDateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TitleButtonDateComponent],
+      declarations: [
+        TitleButtonDateComponent,
+        TitleFilterPipe
+      ],
     })
       .compileComponents();
   });
